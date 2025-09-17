@@ -1,0 +1,33 @@
+@@model RestVm
+<div class="rest">
+  <div class="rest-logo">
+    <img src="~@Model.Logo" alt="@Model.Name">
+  </div>
+  <div class="rest-title">@Model.Name</div>
+  <div class="rest-meta">
+    <span>⭐ @Model.Rating</span>
+    <img src="~/icons/dot.svg" width="4" height="4" alt="">
+    <span>@Model.Category</span>
+    <img src="~/icons/dot.svg" width="4" height="4" alt="">
+    <span>@Model.Price</span>
+  </div>
+  <div class="rest-foot">
+    <span class="chip">@Model.Badge</span>
+    <span class="muted">
+      <img src="~/icons/pin.svg" width="14" height="14" style="opacity:.6"> @Model.Dist
+    </span>
+  </div>
+</div>
+
+<style>
+  .rest{
+    background:#f7f7fa; border-radius:14px; padding:14px; display:flex; flex-direction:column; gap:8px;
+  }
+  .rest-logo{width:58px;height:58px;border-radius:12px;background:#fff;display:grid;place-items:center;box-shadow:var(--shadow-soft)}
+  .rest-logo img{max-width:46px; max-height:46px; object-fit:contain}
+  .rest-title{font-weight:700}
+  .rest-meta{display:flex; align-items:center; gap:10px; color:var(--muted); font-size:13px}
+  .rest-foot{display:flex; align-items:center; justify-content:space-between}
+  .chip{background:var(--chip); color:var(--primary); border-radius:10px; padding:3px 8px; font-size:12px; font-weight:600}
+  .muted{color:var(--muted); display:flex; align-items:center; gap:4px; font-size:12px}
+</style>

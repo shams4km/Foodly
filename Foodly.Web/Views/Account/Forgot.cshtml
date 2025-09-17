@@ -1,0 +1,53 @@
+@model Foodly.Web.Models.Account.ForgotPasswordVm
+@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Forgot password?";
+}
+
+<div class="auth-card">
+  <div class="auth-media">
+    <img src="~/img/auth-bg.jpg" alt="bg" />
+    <div class="auth-brand">
+      <img src="~/img/logo.png" alt="logo">
+      <span>Nibble</span>
+    </div>
+  </div>
+
+  <div class="auth-panel">
+    <h1>Forgot password?</h1>
+    <p>Please enter your email address to continue</p>
+
+    <form asp-action="Forgot" asp-controller="Account" method="post" class="auth-form">
+      <div class="field">
+        <label>Email address</label>
+        <input asp-for="Email" type="email" placeholder="you@example.com" />
+        <span asp-validation-for="Email" class="val"></span>
+      </div>
+
+      <button class="btn-primary" type="submit">Continue</button>
+
+      <div class="val-summary">
+        @Html.ValidationSummary()
+      </div>
+    </form>
+
+    @if (Model.Sent)
+    {
+      <div class="modal-backdrop show"></div>
+      <div class="modal-card">
+        <button class="modal-close" onclick="location.href='/auth/login'">×</button>
+        <div class="modal-icon">✉️</div>
+        <h3>Reset email sent</h3>
+        <p>We have just sent an email with a password reset link to <strong>@Model.Email</strong>.</p>
+        <div class="modal-actions">
+          <button class="btn-secondary" onclick="location.href='/auth/login'">Got it</button>
+          <button class="btn-primary" onclick="location.reload()">Send again</button>
+        </div>
+      </div>
+    }
+  </div>
+</div>
+
+@section Scripts{
+  <partial name="_ValidationScriptsPartial" />
+}

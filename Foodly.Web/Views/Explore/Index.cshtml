@@ -1,0 +1,76 @@
+@{
+    Layout = "_AppLayout";
+    ViewData["Title"] = "Explore";
+}
+
+@section Top{
+    @await Html.PartialAsync("_TopBar")
+}
+
+<div class="explore-page">
+
+    <div class="section-head">
+        <h2>Restaurants nearby</h2>
+        <button class="chip-action" type="button" aria-label="Change distance">
+            <img src="~/icons/pin.svg" width="14" height="14" alt="">
+            <span>20 km</span>
+            <img src="~/icons/chevron-down.svg" width="12" height="12" alt="">
+        </button>
+    </div>
+
+    <div class="grid-nearby">
+        @await Html.PartialAsync("_RestRow", new { Name="Carrows Restaurant", Logo="/img/rest/carrows.png", Rating="4.7 (91)",     Kind="Fish",    Price="$$$", Badge="Free delivery",     Dist="0.3 km",  BadgeType="free"  })
+        @await Html.PartialAsync("_RestRow", new { Name="Domino’s Pizza",     Logo="/img/rest/dominos.png", Rating="5.0 (736)",  Kind="Pizza",   Price="$$",  Badge="Buy 1 get 1 free", Dist="2.8 km",  BadgeType="promo" })
+        @await Html.PartialAsync("_RestRow", new { Name="Pizza Hut",          Logo="/img/rest/ph.png",      Rating="4.6 (24)",   Kind="Pizza",   Price="$",   Badge="Free delivery",     Dist="3.4 km",  BadgeType="free"  })
+        @await Html.PartialAsync("_RestRow", new { Name="Burger King",        Logo="/img/rest/bk.png",      Rating="4.8 (1,873)",Kind="Burger",  Price="$",   Badge="Free delivery",     Dist="4.3 km",  BadgeType="free"  })
+        @await Html.PartialAsync("_RestRow", new { Name="McDonald's",         Logo="/img/rest/mcd.png",     Rating="4.1 (20,359)",Kind="Burger", Price="$",   Badge="$0.99 Delivery",   Dist="9.0 km",  BadgeType="paid"  })
+        @await Html.PartialAsync("_RestRow", new { Name="KFC",                Logo="/img/rest/kfc.png",     Rating="4.4 (2,583)",Kind="Chicken", Price="$",   Badge="Buy 2 get 1 free", Dist="18.6 km", BadgeType="promo" })
+    </div>
+
+    <div class="section-head">
+        <h2>Popular orders</h2>
+        <button class="chip-action" type="button" aria-label="Change date">
+            <img src="~/icons/calendar.svg" width="14" height="14" alt="">
+            <span>Today</span>
+            <img src="~/icons/chevron-down.svg" width="12" height="12" alt="">
+        </button>
+    </div>
+
+    <div class="grid-popular">
+        @await Html.PartialAsync("_DishTile", new { Title="Gigantic Rodeo Burger",   Img="/img/food/burger-hero.jpg",     Badge="$2.99 Delivery", Rating="4.3 (104)",  Kind="Burger",     Price="$",  Time="45 - 55 min", BadgeType="paid"  })
+        @await Html.PartialAsync("_DishTile", new { Title="Delicious Cheese Pie",    Img="/img/food/pizza-cheese.jpg",    Badge="Free delivery",  Rating="4.9 (31)",   Kind="Pie",        Price="$$", Time="15 - 25 min", BadgeType="free"  })
+        @await Html.PartialAsync("_DishTile", new { Title="Chef’s Burger Deluxe",    Img="/img/food/burger-deluxe.jpg",   Badge="Free delivery",  Rating="4.6 (1,006)",Kind="Burger",     Price="$",  Time="20 - 30 min", BadgeType="free"  })
+        @await Html.PartialAsync("_DishTile", new { Title="Pepperoni Pie",           Img="/img/food/pizza-pepperoni.jpg", Badge="Free delivery",  Rating="4.4 (543)",  Kind="Pie",        Price="$$", Time="40 - 50 min", BadgeType="free"  })
+        @await Html.PartialAsync("_DishTile", new { Title="Natural Vegetable Rice",  Img="/img/food/veggie-pan.jpg",      Badge="$3.45 Delivery", Rating="4.8 (92)",   Kind="Vegetables", Price="$",  Time="25 - 40 min", BadgeType="paid"  })
+        @await Html.PartialAsync("_DishTile", new { Title="Vegetable Skewers",       Img="/img/food/veggie-salad.jpg",    Badge="$4.99 Delivery", Rating="4.6 (84)",   Kind="Vegetables", Price="$",  Time="35 - 45 min", BadgeType="paid"  })
+    </div>
+</div>
+
+@section Styles{
+<style>
+/* -------- Explore page scaffolding -------- */
+.explore-page{--gap:22px}
+.explore-page .section-head{
+  display:flex;align-items:center;justify-content:space-between;margin:8px 0 14px
+}
+.explore-page h2{margin:0;font-size:22px;font-weight:800}
+.chip-action{
+  display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;
+  background:#f3f4f6;border:0;color:#111;font-weight:600;cursor:pointer;transition:.18s
+}
+.chip-action:hover{background:#e5e7eb}
+
+/* -------- Grids -------- */
+.grid-nearby{
+  display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:var(--gap);margin-bottom:24px
+}
+.grid-popular{
+  display:grid;grid-template-columns:repeat(3, minmax(0,1fr));gap:var(--gap)
+}
+
+/* небольшой респонс без упора на планшеты */
+@@media (max-width: 1280px){
+  .grid-nearby,.grid-popular{grid-template-columns:repeat(2, minmax(0,1fr))}
+}
+</style>
+}

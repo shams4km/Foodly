@@ -1,0 +1,204 @@
+@model Foodly.Web.Controllers.MessagesController.MessagesVm
+@{
+    Layout = "_AppLayout";
+    ViewData["Title"] = "Messages";
+}
+
+@section Styles{
+<style>
+/* ===== Messages page ===== */
+.msg-grid{
+  display:grid;
+  grid-template-columns: 440px 1fr;
+  gap:18px;
+}
+
+/* LEFT: list */
+.msg-list{
+  background:#fff;border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,.08);
+  padding:16px;
+}
+.msg-list .header{
+  display:flex;align-items:center;justify-content:space-between;margin-bottom:10px;
+}
+.msg-list .header h2{margin:0;font-size:22px}
+.sort{
+  position:relative;font-size:13px;color:#6b7280;background:#f4f5f8;border-radius:10px;padding:8px 12px;cursor:default;
+}
+
+.item{
+  display:grid;grid-template-columns:48px 1fr auto;gap:12px;
+  padding:14px;border-radius:14px;transition:.15s;
+}
+.item:hover{background:#f7f7fb}
+.item + .item{margin-top:6px}
+.item .avatar{width:48px;height:48px;border-radius:50%;object-fit:cover}
+.item .name{font-weight:700}
+.item .title{color:#6b7280;font-size:12px;margin-left:6px}
+.item .preview{color:#4b5563;font-size:13px;margin-top:4px}
+.item .tags{display:flex;gap:6px;margin-top:8px}
+.tag{font-size:11px;background:#eef2ff;color:#4c51bf;border-radius:8px;padding:4px 8px}
+.tag.warn{background:#fff1f0;color:#e05243}
+.item .time{color:#9ca3af;font-size:12px;white-space:nowrap}
+.item.unread{background:#f2efff}
+.item.unread .name{color:#503E9D}
+
+/* RIGHT: thread */
+.thread{
+  background:#fff;border-radius:20px;box-shadow:0 12px 30px rgba(0,0,0,.08);
+  padding:16px 16px 14px;
+  display:flex;flex-direction:column;min-height:620px;
+}
+.thread .head{display:flex;align-items:center;gap:12px;margin-bottom:8px}
+.thread .head img{width:44px;height:44px;border-radius:50%}
+.thread .head .who{font-weight:700}
+.thread .head .email{font-size:12px;color:#6b7280}
+
+.sep{margin:10px 0 16px;text-align:center;color:#9ca3af;font-size:12px}
+
+.bubbles{display:flex;flex-direction:column;gap:12px;flex:1}
+.bubble{
+  max-width:68%;padding:12px 14px;border-radius:12px;font-size:14px;line-height:1.4;
+  position:relative;
+}
+.bubble.left{background:#f6f7fb;color:#1f2430;border-top-left-radius:6px}
+.bubble.right{background:#503E9D;color:#fff;margin-left:auto;border-top-right-radius:6px}
+.btime{font-size:10px;color:#9ca3af;margin-top:4px}
+
+.quick{display:flex;gap:8px;margin-top:12px;flex-wrap:wrap}
+.chip{background:#eef2ff;color:#4c51bf;border:0;border-radius:8px;padding:8px 10px;font-size:12px;cursor:pointer}
+.chip:hover{filter:brightness(.97)}
+
+.compose{
+  display:flex;gap:10px;margin-top:10px;align-items:center
+}
+.compose input{
+  flex:1;border:1px solid #e5e7eb;border-radius:12px;padding:12px 12px;font-size:14px;outline:none;background:#fff;
+}
+.compose button{
+  width:42px;height:42px;border-radius:12px;border:0;background:#503E9D;color:#fff;cursor:pointer
+}
+.compose button:hover{filter:brightness(.95)}
+</style>
+}
+
+<div class="msg-grid">
+
+  <!-- LEFT: list -->
+  <section class="msg-list">
+    <div class="header">
+      <h2>Messages</h2>
+      <div class="sort">⏱️ @Model.Sort</div>
+    </div>
+
+    @foreach (var m in Model.Items)
+    {
+      <a class="item @(m.Unread ? "unread" : "")" href="/messages?open=@m.Id">
+        <img src="@m.Avatar" class="avatar" alt="" />
+        <div>
+          <div>
+            <span class="name">@m.FromName</span>
+            <span class="title">, @m.FromTitle</span>
+          </div>
+          <div class="preview">@m.Preview</div>
+          @if (m.Tags?.Length > 0)
+          {
+            <div class="tags">
+              @foreach (var t in m.Tags)
+              {
+                var warn = t.Contains("Expire", StringComparison.OrdinalIgnoreCase) ? "warn" : "";
+                <span class="tag @warn">@t</span>
+              }
+            </div>
+          }
+        </div>
+        <div class="time">@m.TimeAgo</div>
+      </a>
+    }
+  </section>
+
+  <!-- RIGHT: thread -->
+  <section class="thread">
+    <div class="head">
+      <img src="@Model.Thread.Avatar" alt="">
+      <div>
+        <div class="who">@Model.Thread.UserName</div>
+        <div class="email">@Model.Thread.Email</div>
+      </div>
+    </div>
+
+    <div class="sep">@Model.Thread.DateHeader</div>
+
+    <div class="bubbles" id="bubbles">
+      @foreach (var b in Model.Thread.Bubbles)
+      {
+        <div class="bubble @b.Side">
+          @Html.Raw(b.Text)  @* можно жирный текст/emoji как в макете *@
+          <div class="btime">@b.Time</div>
+        </div>
+      }
+    </div>
+
+    <div class="quick">
+      <button class="chip" onclick="ins('I didn’t get my order.')">I didn’t get my order.</button>
+      <button class="chip" onclick="ins('I have received a wrong order')">I have received a wrong order</button>
+    </div>
+
+    <div class="compose">
+      <input id="msg" placeholder="Hi, how|" />
+      <button id="send" title="Send">✉️</button>
+    </div>
+  </section>
+
+</div>
+
+@section Scripts{
+<script>
+  const input = document.getElementById('msg');
+  const bubbles = document.getElementById('bubbles');
+
+  function ins(text){
+    input.value = text;
+    input.focus();
+  }
+
+  document.getElementById('send').addEventListener('click', () => {
+    const txt = input.value.trim();
+    if(!txt) return;
+
+    const wrap = document.createElement('div');
+    wrap.className = 'bubble right';
+    wrap.innerText = txt;
+
+    const time = document.createElement('div');
+    time.className = 'btime';
+    const now = new Date();
+    const t = now.toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+    time.innerText = t;
+
+    wrap.appendChild(time);
+    bubbles.appendChild(wrap);
+    input.value = '';
+
+    // небольшой авто-ответ для ощущения диалога
+    setTimeout(()=> {
+      const r = document.createElement('div');
+      r.className = 'bubble left';
+      r.innerHTML = "Thanks! We'll check it and get back to you shortly. 🔎";
+      const t2 = document.createElement('div');
+      t2.className = 'btime';
+      t2.innerText = new Date().toLocaleTimeString([], {hour:'2-digit', minute:'2-digit'});
+      r.appendChild(t2);
+      bubbles.appendChild(r);
+      bubbles.scrollTop = bubbles.scrollHeight;
+    }, 600);
+
+    bubbles.scrollTop = bubbles.scrollHeight;
+  });
+
+  // Enter = отправить
+  input.addEventListener('keydown', (e)=>{
+    if(e.key === 'Enter'){ e.preventDefault(); document.getElementById('send').click(); }
+  });
+</script>
+}

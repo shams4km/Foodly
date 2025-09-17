@@ -1,0 +1,30 @@
+C:/Foodly/Foodly.Application/bin/Debug/net9.0/Foodly.Application.deps.json
+C:/Foodly/Foodly.Application/bin/Debug/net9.0/Foodly.Application.dll
+C:/Foodly/Foodly.Application/bin/Debug/net9.0/Foodly.Application.pdb
+C:/Foodly/Foodly.Application/bin/Debug/net9.0/Foodly.Domain.dll
+C:/Foodly/Foodly.Application/bin/Debug/net9.0/Foodly.Domain.pdb
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/Foodly.Application.csproj.AssemblyReference.cache
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/Foodly.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/Foodly.Application.AssemblyInfoInputs.cache
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/Foodly.Application.AssemblyInfo.cs
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/Foodly.Application.csproj.CoreCompileInputs.cache
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/Foodly.A.80999351.Up2Date
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/Foodly.Application.dll
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/refint/Foodly.Application.dll
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/Foodly.Application.pdb
+C:/Foodly/Foodly.Application/obj/Debug/net9.0/ref/Foodly.Application.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Application/bin/Debug/net9.0/Foodly.Application.deps.json
+/Users/shams/Downloads/Foodly 2/Foodly.Application/bin/Debug/net9.0/Foodly.Application.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Application/bin/Debug/net9.0/Foodly.Application.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Application/bin/Debug/net9.0/Foodly.Domain.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Application/bin/Debug/net9.0/Foodly.Domain.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/Foodly.Application.csproj.AssemblyReference.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/Foodly.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/Foodly.Application.AssemblyInfoInputs.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/Foodly.Application.AssemblyInfo.cs
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/Foodly.Application.csproj.CoreCompileInputs.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/Foodly.A.80999351.Up2Date
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/Foodly.Application.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/refint/Foodly.Application.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/Foodly.Application.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Application/obj/Debug/net9.0/ref/Foodly.Application.dll

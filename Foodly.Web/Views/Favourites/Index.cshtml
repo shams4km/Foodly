@@ -1,0 +1,76 @@
+@model Foodly.Web.Models.Favourites.FavouritesVm
+@{
+    Layout = "_AppLayout";
+    ViewData["Title"] = "Favourites";
+}
+
+@section Top{
+    @await Html.PartialAsync("_TopBar")
+}
+
+@section Styles{
+<style>
+    .tabs{display:flex;gap:10px;margin:8px 0 18px}
+    .chip{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:12px;background:#eef0f6;color:#1f2430;text-decoration:none;font-weight:600}
+    .chip.active{background:#503E9D;color:#fff}
+    .grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+    .hidden{display:none}
+    .card{background:#fff;border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.08);padding:12px}
+    .thumb img,.logo img{width:100%;height:180px;object-fit:cover;border-radius:12px}
+    .logo img{width:80px;height:80px;object-fit:contain;background:#f6f7fb;padding:8px;border-radius:14px}
+    .title{font-weight:700;margin:10px 0 6px}
+    .meta{font-size:13px;color:#6b7280}
+    .badge{display:inline-block;margin-top:8px;background:#ecebff;color:#503E9D;padding:4px 8px;border-radius:10px;font-size:12px}
+</style>
+}
+
+<div class="tabs">
+    <a id="tabBtn-restaurants" href="#" class="chip active" onclick="return switchTab('restaurants')">
+        Restaurants (@Model.Restaurants.Count)
+    </a>
+    <a id="tabBtn-dishes" href="#" class="chip" onclick="return switchTab('dishes')">
+        Dishes (@Model.Dishes.Count)
+    </a>
+</div>
+
+<div id="tab-restaurants" class="grid">
+@foreach (var r in Model.Restaurants)
+{
+    <div class="card">
+        <div class="logo"><img src="@(string.IsNullOrWhiteSpace(r.Logo)?"/img/brands/placeholder.png":r.Logo)" alt="@r.Title" /></div>
+        <div class="title">@r.Title</div>
+        <div class="meta">@r.Meta</div>
+        <div class="badge">@r.Badge</div>
+    </div>
+}
+</div>
+
+<div id="tab-dishes" class="grid hidden">
+@foreach (var d in Model.Dishes)
+{
+    <div class="card">
+        <div class="thumb"><img src="@(string.IsNullOrWhiteSpace(d.Image)?"/img/foods/placeholder.jpg":d.Image)" alt="@d.Title" /></div>
+        <div class="title">@d.Title</div>
+        <div class="meta">@d.Meta</div>
+        <div class="badge">@d.Badge</div>
+    </div>
+}
+</div>
+
+@section Scripts{
+<script>
+  function switchTab(name){
+    const r = document.getElementById('tab-restaurants');
+    const d = document.getElementById('tab-dishes');
+    const br = document.getElementById('tabBtn-restaurants');
+    const bd = document.getElementById('tabBtn-dishes');
+    const showRestaurants = name === 'restaurants';
+    r.classList.toggle('hidden', !showRestaurants);
+    d.classList.toggle('hidden', showRestaurants);
+    br.classList.toggle('active', showRestaurants);
+    bd.classList.toggle('active', !showRestaurants);
+    return false;
+  }
+</script>
+
+}

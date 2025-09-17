@@ -1,0 +1,38 @@
+C:/Foodly/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Infrastructure.deps.json
+C:/Foodly/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Infrastructure.runtimeconfig.json
+C:/Foodly/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Infrastructure.dll
+C:/Foodly/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Infrastructure.pdb
+C:/Foodly/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Application.dll
+C:/Foodly/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Domain.dll
+C:/Foodly/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Domain.pdb
+C:/Foodly/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Application.pdb
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.csproj.AssemblyReference.cache
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.AssemblyInfoInputs.cache
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.AssemblyInfo.cs
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.csproj.CoreCompileInputs.cache
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.I.5105626C.Up2Date
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.dll
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/refint/Foodly.Infrastructure.dll
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.pdb
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.genruntimeconfig.cache
+C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/ref/Foodly.Infrastructure.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Infrastructure.deps.json
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Infrastructure.runtimeconfig.json
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Infrastructure.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Infrastructure.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Application.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Domain.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Domain.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/bin/Debug/net9.0/Foodly.Application.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.csproj.AssemblyReference.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.AssemblyInfoInputs.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.AssemblyInfo.cs
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.I.5105626C.Up2Date
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/refint/Foodly.Infrastructure.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.genruntimeconfig.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/ref/Foodly.Infrastructure.dll

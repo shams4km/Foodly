@@ -1,0 +1,8 @@
+@import url('/css/explore.css');
+
+.tabs{display:flex; gap:8px; margin:10px 0 16px}
+.tab{background:#f1f0ff; border:0; padding:10px 14px; border-radius:12px; cursor:pointer}
+.tab.is-active{background:#503E9D; color:#fff}
+.tab .badge{margin-left:8px; background:rgba(255,255,255,.2); color:#fff}
+.tabpane{display:none}
+.tabpane.is-active{display:block}

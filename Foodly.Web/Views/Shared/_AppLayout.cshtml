@@ -1,0 +1,133 @@
+@{
+    Layout = null;
+    var title = ViewData["Title"] as string ?? "Nibble";
+}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>@title — Nibble</title>
+  <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+  @RenderSection("Styles", required: false)
+
+  <style>
+    :root{
+      --bg:#f5f6fb;
+      --surface:#ffffff;
+      --text:#121826;
+      --muted:#6b7280;
+      --primary:#503E9D;           /* фиолетовый из макета */
+      --primary-2:#4230b3;
+      --accent:#ff7b45;            /* оранжевые кнопки/ярлыки */
+      --chip:#ecebff;              /* светло-фиолетовый фон */
+      --radius:18px;
+      --radius-lg:22px;
+      --shadow:0 12px 30px rgba(0,0,0,.08);
+      --shadow-soft:0 6px 18px rgba(0,0,0,.06);
+    }
+
+    html,body{height:100%}
+    *{box-sizing:border-box}
+    body{
+      margin:0; background:var(--bg); color:var(--text);
+      font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+    }
+
+    .app{
+      min-height:100vh;
+      padding:18px;
+      display:grid;
+      grid-template-columns:260px 1fr;
+      gap:18px;
+    }
+
+    /* LEFT */
+    .sidebar{
+      background:var(--surface);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:16px;
+      display:flex;
+      flex-direction:column;
+      gap:16px;
+    }
+
+    /* RIGHT */
+    .content{display:flex; flex-direction:column; gap:18px}
+    .panel{
+      background:var(--surface);
+      border-radius:20px;
+      box-shadow:var(--shadow);
+      padding:18px 18px 28px;
+    }
+
+    /* Topbar-строка внутри правой панели */
+    .topbar{
+      display:grid;
+      grid-template-columns:auto auto auto 1fr auto auto;
+      gap:14px;
+      align-items:center;
+      margin-bottom:6px;
+    }
+    .tb-item{display:flex; align-items:center; gap:8px; font-size:14px}
+    .tb-item .chip{background:#f1f2f6; padding:9px 12px; border-radius:12px}
+    .tb-sel{cursor:pointer}
+    .search{
+      display:flex; align-items:center; gap:8px;
+      background:#f1f2f6; border-radius:12px; padding:10px 14px;
+    }
+    .search input{border:0; outline:0; background:transparent; width:100%; font:inherit; color:inherit}
+
+    .icon-btn{
+      width:42px; height:42px; border-radius:12px; border:0; cursor:pointer;
+      display:grid; place-items:center; color:#fff;
+    }
+    .icon-purple{background:var(--primary)}
+    .icon-orange{background:var(--accent)}
+
+    @@media (max-width: 1200px){
+      .app{grid-template-columns: 1fr}
+      .sidebar{order:2}
+    }
+
+    :root{
+    --bg:#f5f6fb; --surface:#fff; --text:#1f2430; --muted:#6b7280;
+    --primary:#503E9D; --radius:14px;
+    --shadow:0 12px 30px rgba(0,0,0,.08);
+    --shadow-soft:0 8px 18px rgba(0,0,0,.06);
+    --chip:#ecebff;
+  }
+  html,body{height:100%}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",Roboto,Inter,Arial}
+  .app{min-height:100vh;display:grid;grid-template-columns:260px 1fr;gap:18px}
+  .sidebar{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:16px}
+  .content{padding:18px 18px 28px}
+  .panel{background:var(--surface);border-radius:20px;box-shadow:var(--shadow);padding:18px}
+  .topbar{display:grid;grid-template-columns:1fr auto auto auto 1fr;gap:12px;align-items:center}
+  .topbar .search{grid-column:3;display:flex;align-items:center;background:#f1f2f6;border-radius:12px;padding:10px 14px}
+  @@media (max-width: 1024px){
+    .app{grid-template-columns:1fr}
+    .sidebar{order:2}
+  }
+  </style>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      @await Html.PartialAsync("_Sidebar")
+    </aside>
+
+    <main class="content">
+      <section class="panel">
+        @RenderSection("Top", required: false)
+        @RenderBody()
+      </section>
+    </main>
+  </div>
+
+  <script src="~/lib/jquery/dist/jquery.min.js"></script>
+  <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+  @RenderSection("Scripts", required:false)
+</body>
+</html>

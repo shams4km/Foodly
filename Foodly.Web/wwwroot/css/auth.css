@@ -1,0 +1,98 @@
+/* Base */
+:root{
+  --bg:#f5f6fb;
+  --surface:#ffffff;
+  --text:#1f2430;
+  --muted:#6b7280;
+  --primary:#503E9D;       /* фиолетовая кнопка из макета */
+  --primary-2:#473ac6;
+  --danger:#e94235;
+  --radius-lg:22px;        /* скругление на фото */
+  --radius:12px;
+  --shadow:0 12px 30px rgba(0,0,0,.08);
+}
+*{box-sizing:border-box}
+html,body{height:100%}
+body{
+  margin:0;
+  background:var(--bg);
+  color:var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Inter, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+
+.auth-shell{min-height:100vh; display:flex; align-items:stretch;}
+
+/* Card layout */
+.auth-card{
+  margin:auto;
+  width:min(1100px, 96vw);
+  background:var(--surface);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow);
+  display:flex;
+  overflow:hidden;
+}
+
+/* Left image */
+.auth-media{
+  position:relative;
+  flex: 0 0 44%;
+  min-height:520px;
+  background:#000;
+}
+.auth-media img{
+  width:100%; height:100%; object-fit:cover; opacity:.9;
+}
+.auth-brand{
+  position:absolute; inset:auto 0 38% 0; display:flex; gap:12px; justify-content:center; align-items:center; color:#fff; font-weight:700; font-size:28px;
+}
+.auth-brand img{width:54px; height:54px; object-fit:contain;}
+
+/* Right panel */
+.auth-panel{
+  flex:1; padding:56px 64px; display:flex; flex-direction:column; justify-content:center;
+}
+.auth-panel h1{margin:0 0 6px;font-size:32px;font-weight:700}
+.auth-panel p{margin:0 0 28px;color:var(--muted)}
+
+/* Form */
+.auth-form .field{margin-bottom:18px}
+.auth-form label{display:block; font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:var(--muted); margin:0 0 8px}
+.auth-form input{
+  width:100%; border:0; border-bottom:1px solid #e5e7eb; padding:12px 2px; font-size:16px; outline:none; background:#fff;
+}
+.auth-form input:focus{border-color:var(--primary)}
+.val{display:block;color:var(--danger);font-size:12px;margin-top:6px}
+.val-summary{color:var(--danger); margin-top:8px; font-size:13px}
+
+/* Buttons */
+.btn-primary, .btn-secondary{
+  width:100%; padding:14px 16px; font-size:16px; border-radius:10px; border:0; cursor:pointer;
+}
+.btn-primary{background:var(--primary); color:#fff}
+.btn-primary:hover{background:var(--primary-2)}
+.btn-secondary{background:#ecebff; color:var(--primary); margin-top:12px}
+.btn-secondary:hover{filter:brightness(.97)}
+
+.links{margin:12px 0 10px; text-align:center}
+.links a{color:var(--muted); text-decoration:none}
+.switch{margin-top:14px; text-align:center}
+.switch a{color:#e05b3f; text-decoration:none; font-weight:600}
+
+/* Modal (forgot success) */
+.modal-backdrop{position:fixed; inset:0; background:rgba(0,0,0,.35); opacity:1}
+.modal-card{
+  position:fixed; left:50%; top:50%; transform:translate(-50%,-50%);
+  background:#fff; border-radius:14px; width:min(420px, 92vw); padding:22px; box-shadow:var(--shadow); text-align:center;
+}
+.modal-close{position:absolute; right:12px; top:8px; border:0; background:transparent; font-size:22px; cursor:pointer}
+.modal-icon{font-size:38px; margin:10px 0}
+.modal-actions{display:flex; gap:10px; margin-top:12px}
+
+/* Tablet: картинка сверху */
+@media (max-width: 992px){
+  .auth-card{flex-direction:column}
+  .auth-media{flex:0 0 auto; height:240px; border-bottom-left-radius:var(--radius-lg); border-bottom-right-radius:var(--radius-lg);}
+  .auth-brand{bottom:16px; font-size:26px}
+  .auth-panel{padding:28px 20px 36px}
+}

@@ -1,0 +1,9 @@
+@{
+    Layout = null;
+    var code = Context.Request.Query["code"].ToString();
+}
+<!doctype html>
+<html><body>
+<h1>Error @code</h1>
+<p>Requested resource is not available or access is denied.</p>
+</body></html>

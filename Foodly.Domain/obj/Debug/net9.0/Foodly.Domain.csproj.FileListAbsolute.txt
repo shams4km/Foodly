@@ -1,0 +1,22 @@
+C:/Foodly/Foodly.Domain/bin/Debug/net9.0/Foodly.Domain.deps.json
+C:/Foodly/Foodly.Domain/bin/Debug/net9.0/Foodly.Domain.dll
+C:/Foodly/Foodly.Domain/bin/Debug/net9.0/Foodly.Domain.pdb
+C:/Foodly/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.GeneratedMSBuildEditorConfig.editorconfig
+C:/Foodly/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.AssemblyInfoInputs.cache
+C:/Foodly/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.AssemblyInfo.cs
+C:/Foodly/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.csproj.CoreCompileInputs.cache
+C:/Foodly/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.dll
+C:/Foodly/Foodly.Domain/obj/Debug/net9.0/refint/Foodly.Domain.dll
+C:/Foodly/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.pdb
+C:/Foodly/Foodly.Domain/obj/Debug/net9.0/ref/Foodly.Domain.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/bin/Debug/net9.0/Foodly.Domain.deps.json
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/bin/Debug/net9.0/Foodly.Domain.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/bin/Debug/net9.0/Foodly.Domain.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.AssemblyInfoInputs.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.AssemblyInfo.cs
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.csproj.CoreCompileInputs.cache
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/refint/Foodly.Domain.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.pdb
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/ref/Foodly.Domain.dll

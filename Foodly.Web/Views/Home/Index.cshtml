@@ -1,0 +1,98 @@
+﻿@{
+  Layout = "_AppLayout";
+  ViewData["Title"] = "Home";
+}
+
+@section Top{
+  @await Html.PartialAsync("_TopBar")
+}
+
+<!-- Explore categories -->
+<h2 style="margin:8px 0 10px">Explore categories</h2>
+<div class="row-cats">
+  @* 6 карточек категорий *@
+  @foreach (var item in new[] {
+    new {icon="flame.svg",    name="Popular",        sub="286+ options",  bg="#ffe9df"},
+    new {icon="fast.svg",     name="Fast delivery",  sub="1,843+ options",bg="#ecebff"},
+    new {icon="credit.svg",   name="High class",     sub="25+ options",   bg="#fff4c9"},
+    new {icon="cutlery.svg",  name="Dine in",        sub="182+ options",  bg="#ffe3d9"},
+    new {icon="pickup.svg",   name="Pick up",        sub="3,548+ options",bg="#ecebff"},
+    new {icon="map.svg",      name="Nearest",        sub="44+ options",   bg="#fff4c9"},
+  })
+  {
+    <div class="cat-card">
+      <div class="cat-ico" style="background:@item.bg">
+        <img src="~/icons/@item.icon" width="22" height="22" alt="">
+      </div>
+      <div class="cat-name">@item.name</div>
+      <div class="cat-sub">@item.sub</div>
+    </div>
+  }
+  <a class="see-all" href="/explore">See all <img src="~/icons/chevron-right.svg" width="14" /></a>
+</div>
+
+<!-- Featured restaurants -->
+<div class="section-head">
+  <h2>Featured restaurants</h2>
+  <a class="see-all" href="/explore">See all <img src="~/icons/chevron-right.svg" width="14" /></a>
+</div>
+
+<div class="grid-rest">
+  @* 6 карточек, как в макете *@
+  @Html.Partial("_RestCard", new RestVm("Burger King",       "/img/rest/bk.png",   "4.8",  "Burger", "$",  "Free delivery", "4.3 km"))
+  @Html.Partial("_RestCard", new RestVm("Carrows Restaurant","/img/rest/carrows.png","4.7", "Fish",   "$$$","Free delivery", "0.3 km"))
+  @Html.Partial("_RestCard", new RestVm("KFC",               "/img/rest/kfc.png",  "4.4",  "Chicken","$",  "Buy 2 get 1 free","18.6 km"))
+  @Html.Partial("_RestCard", new RestVm("Domino’s Pizza",    "/img/rest/dominos.png","5.0", "Pizza", "$$",  "Buy 1 get 1 free","2.8 km"))
+  @Html.Partial("_RestCard", new RestVm("McDonald’s",        "/img/rest/mcd.png",  "4.1",  "Burger","$",    "$0.99 Delivery", "9.0 km"))
+  @Html.Partial("_RestCard", new RestVm("Pizza Hut",         "/img/rest/ph.png",   "4.6",  "Pizza", "$",    "Free delivery",  "3.4 km"))
+</div>
+
+<!-- Asian food -->
+<div class="section-head">
+  <h2>Asian food</h2>
+  <a class="see-all" href="/explore">See all <img src="~/icons/chevron-right.svg" width="14" /></a>
+</div>
+
+<div class="grid-asian">
+  @Html.Partial("_DishCard", new DishVm("Spicy Na Thai Town",      "/img/food/asian-1.jpg", "Free delivery"))
+  @Html.Partial("_DishCard", new DishVm("Szechuan Dan Dan Noodles","/img/food/asian-2.jpg", "$1.99 Delivery"))
+  @Html.Partial("_DishCard", new DishVm("Pot Chicken Adobo",       "/img/food/asian-3.jpg", "Free delivery"))
+</div>
+
+@section Styles{
+  <style>
+    .section-head{display:flex; justify-content:space-between; align-items:center; margin:18px 0 8px}
+    .see-all{display:flex; align-items:center; gap:6px; color:#4327b3; text-decoration:none; font-weight:600}
+
+    /* categories */
+    .row-cats{
+      display:grid; grid-template-columns: repeat(6, 1fr); gap:16px; position:relative;
+      margin-bottom:8px;
+    }
+    .cat-card{
+      background:#f7f7fa; border-radius:14px; padding:16px; text-align:left;
+    }
+    .cat-ico{
+      width:48px;height:48px;border-radius:10px; display:grid; place-items:center; margin-bottom:10px;
+    }
+    .cat-name{font-weight:700}
+    .cat-sub{color:var(--muted); font-size:12px}
+    .row-cats .see-all{position:absolute; right:0; top:-32px}
+
+    /* restaurants grid */
+    .grid-rest{
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;
+    }
+
+    /* asian food big cards */
+    .grid-asian{
+      margin-top:4px;
+      display:grid; grid-template-columns: repeat(3, 1fr); gap:16px;
+    }
+  </style>
+}
+
+@functions{
+  public record RestVm(string Name, string Logo, string Rating, string Category, string Price, string Badge, string Dist);
+  public record DishVm(string Title, string Img, string Badge);
+}

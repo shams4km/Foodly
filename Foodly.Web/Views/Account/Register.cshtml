@@ -1,0 +1,56 @@
+@model Foodly.Web.Models.Account.RegisterVm
+@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Create an account";
+}
+
+<div class="auth-card">
+  <div class="auth-media">
+    <img src="~/img/auth-bg.jpg" alt="bg" />
+    <div class="auth-brand">
+      <img src="~/img/logo.png" alt="logo">
+      <span>Nibble</span>
+    </div>
+  </div>
+
+  <div class="auth-panel">
+    <h1>Create an account</h1>
+    <p>Please create an account to continue using our service</p>
+
+    <form asp-action="Register" asp-controller="Account" method="post" class="auth-form">
+      <input type="hidden" asp-for="ReturnUrl" />
+
+      <div class="field">
+        <label>Full Name</label>
+        <input asp-for="FullName" placeholder="Mark Clarke" />
+        <span asp-validation-for="FullName" class="val"></span>
+      </div>
+
+      <div class="field">
+        <label>Email address</label>
+        <input asp-for="Email" type="email" placeholder="markclarke@gmail.com" />
+        <span asp-validation-for="Email" class="val"></span>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input asp-for="Password" type="password" placeholder="******" />
+        <span asp-validation-for="Password" class="val"></span>
+      </div>
+
+      <button class="btn-primary" type="submit">Create an account</button>
+
+      <div class="switch">
+        Already have an account? <a href="/auth/login">Sign In</a>
+      </div>
+
+      <div class="val-summary">
+        @Html.ValidationSummary()
+      </div>
+    </form>
+  </div>
+</div>
+
+@section Scripts{
+  <partial name="_ValidationScriptsPartial" />
+}

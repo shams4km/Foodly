@@ -1,0 +1,54 @@
+@model Foodly.Web.Models.Account.LoginVm
+@{
+    Layout = "_AuthLayout";
+    ViewData["Title"] = "Sign in";
+}
+
+<div class="auth-card">
+  <div class="auth-media">
+    <img src="~/img/auth-bg.jpg" alt="bg" />
+    <div class="auth-brand">
+      <img src="~/img/logo.png" alt="logo">
+      <span>Nibble</span>
+    </div>
+  </div>
+
+  <div class="auth-panel">
+    <h1>Welcome!</h1>
+    <p>Sign in to your account to continue</p>
+
+    <form asp-action="Login" asp-controller="Account" method="post" class="auth-form">
+      <input type="hidden" asp-for="ReturnUrl" />
+      
+      <div class="field">
+        <label>Email address</label>
+        <input asp-for="Email" type="email" placeholder="you@example.com" />
+        <span asp-validation-for="Email" class="val"></span>
+      </div>
+
+      <div class="field">
+        <label>Password</label>
+        <input asp-for="Password" type="password" placeholder="******" />
+        <span asp-validation-for="Password" class="val"></span>
+      </div>
+
+      <button class="btn-primary" type="submit">Sign in</button>
+
+      <div class="links">
+        <a href="/auth/forgot">Forgot password?</a>
+      </div>
+
+      <button type="button" class="btn-secondary" onclick="location.href='/auth/register'">
+        Create an account
+      </button>
+
+      <div class="val-summary">
+        @Html.ValidationSummary()
+      </div>
+    </form>
+  </div>
+</div>
+
+@section Scripts{
+  <partial name="_ValidationScriptsPartial" />
+}

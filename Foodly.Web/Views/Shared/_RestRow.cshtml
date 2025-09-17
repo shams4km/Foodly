@@ -1,0 +1,47 @@
+@{ dynamic m = Model; }
+
+<article class="rest-card" role="button" tabindex="0" aria-label="@m.Name">
+  <div class="rest-logo">
+    <img src="~@m.Logo" alt="@m.Name logo" loading="lazy">
+  </div>
+
+  <div class="rest-info">
+    <div class="rest-title">@m.Name</div>
+    <div class="rest-meta">
+      <span class="i">⭐</span>@m.Rating
+      <span class="sep">·</span>@m.Kind
+      <span class="sep">·</span>@m.Price
+    </div>
+    <div class="rest-foot">
+      <span class="badge @m.BadgeType">@m.Badge</span>
+      <span class="dist">📍 @m.Dist</span>
+    </div>
+  </div>
+</article>
+
+<style>
+.rest-card{
+  background:#fff;border-radius:16px;padding:14px;display:flex;gap:14px;
+  box-shadow:0 10px 24px rgba(0,0,0,.06);transition:transform .2s, box-shadow .2s
+}
+.rest-card:hover{transform:translateY(-3px);box-shadow:0 12px 28px rgba(0,0,0,.09)}
+.rest-card:focus{outline:2px solid #503E9D22;outline-offset:2px}
+
+.rest-logo{
+  width:62px;height:62px;display:grid;place-items:center;border-radius:14px;background:#fff;
+  box-shadow:0 6px 16px rgba(0,0,0,.06)
+}
+.rest-logo img{max-width:52px;max-height:52px;object-fit:contain}
+
+.rest-title{font-weight:800;margin-bottom:4px}
+.rest-meta{font-size:13px;color:#6b7280}
+.rest-meta .sep{opacity:.5;margin:0 6px}
+.rest-foot{margin-top:8px;display:flex;gap:10px;align-items:center}
+.dist{font-size:12px;color:#6b7280}
+
+/* badges */
+.badge{padding:4px 10px;border-radius:8px;font-size:12px;font-weight:800}
+.badge.free  {background:#ecebff;color:#503E9D}
+.badge.promo {background:#fff0f0;color:#dc2626}
+.badge.paid  {background:#fef3c7;color:#92400e}
+</style>

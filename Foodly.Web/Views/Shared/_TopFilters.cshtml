@@ -1,0 +1,28 @@
+@* Верхняя панель фильтров + поиск *@
+<section class="topbar" style="margin-bottom:16px">
+    <div></div>
+
+    <div style="display:flex;gap:14px;align-items:center">
+        <span>📍 San Francisco, California ▾</span>
+        <span>👜 Pick up ▾</span>
+        <span>🟨 Best deals ▾</span>
+    </div>
+
+    <div class="search">
+        🔎 <input placeholder="Search for anything…" style="border:0;background:transparent;outline:none;flex:1;margin-left:8px" />
+    </div>
+
+    <div style="display:flex;gap:10px">
+        <a class="btn" href="#" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:#4c3fb5;color:#fff;text-decoration:none">≡</a>
+        <a class="btn" href="#" style="display:inline-flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:12px;background:#ff6a3d;color:#fff;text-decoration:none">🛒</a>
+    </div>
+
+    <div></div>
+</section>
+
+<style>
+  .chip{display:inline-flex;align-items:center;gap:6px;background:#f1f2f6;border-radius:10px;padding:6px 10px;font-size:13px}
+  .chip .icon{width:18px;height:18px;display:inline-grid;place-items:center;border-radius:6px}
+  .i-search{background:#e7e8fd}.i-filter{background:#e7f0ff}.i-cart{background:#ffeef2}.i-location{background:#ecf1ff}
+  @@media (max-width:1024px){ .topbar{grid-template-columns:1fr;gap:10px} }
+</style>
