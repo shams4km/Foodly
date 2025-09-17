@@ -48,6 +48,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQWRtaW4vVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[/Users/shams/Downloads/Foodly 2/Foodly.Web/Views/Cart/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3MvQ2FydC9JbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [/Users/shams/Downloads/Foodly 2/Foodly.Web/Views/Error/ServerError.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3MvRXJyb3IvU2VydmVyRXJyb3IuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

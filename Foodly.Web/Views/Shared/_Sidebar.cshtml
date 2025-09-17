@@ -1,3 +1,6 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<IdentityUser> UserManager
 @{
     // Текущий маршрут — чтобы подсвечивать активный пункт
     var isAdmin = User.IsInRole("Admin");
@@ -61,6 +64,19 @@
             </svg>
         </span>
         <span>Explore</span>
+    </a>
+
+    <!-- Cart -->
+    <a asp-controller="Cart" asp-action="Index"
+       class="sb-item @(isActive("cart") ? "active" : "")">
+        <span class="sb-ico">
+            <svg viewBox="0 0 24 24" fill="none">
+              <path d="M6 6h15l-1.5 9h-12L6 6Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/>
+              <circle cx="9" cy="20" r="1.5" stroke="currentColor" stroke-width="1.6"/>
+              <circle cx="18" cy="20" r="1.5" stroke="currentColor" stroke-width="1.6"/>
+            </svg>
+        </span>
+        <span>Cart</span>
     </a>
 
     <!-- Favourites -->

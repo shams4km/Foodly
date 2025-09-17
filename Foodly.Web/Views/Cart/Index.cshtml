@@ -1,0 +1,107 @@
+@model IEnumerable<Foodly.Web.Models.CartItemVm>
+
+@{
+    Layout = "_AppLayout";
+    ViewData["Title"] = "Cart";
+    var items = Model.ToList();
+    var total = items.Sum(i => i.LineTotal);
+}
+
+<h2 style="margin-bottom:20px">🛒 My Cart</h2>
+
+@if (!items.Any())
+{
+    <p>Your cart is empty.</p>
+}
+else
+{
+    <table class="cart-table">
+        <thead>
+            <tr>
+                <th style="min-width:240px">Product</th>
+                <th style="width:120px">Price</th>
+                <th style="width:160px">Quantity</th>
+                <th style="width:120px">Total</th>
+                <th style="width:120px"></th>
+            </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in items)
+        {
+            <tr>
+                <td>@item.ProductName</td>
+                <td>$@item.UnitPrice</td>
+                <td>
+                    <form asp-action="UpdateQty" method="post" style="display:flex;gap:8px;align-items:center">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <input type="number" name="qty" value="@item.Quantity" min="1" class="qty-input"/>
+                        <button type="submit" class="btn-small">Update</button>
+                    </form>
+                </td>
+                <td>$@item.LineTotal</td>
+                <td>
+                    <form asp-action="Remove" method="post">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" name="id" value="@item.Id" />
+                        <button type="submit" class="btn-small danger">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+
+    <div class="cart-total">
+        <strong>Total: $@total</strong>
+        <form asp-controller="Cart" asp-action="Checkout" method="post" style="display:inline;margin-left:20px">
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn-small">Checkout</button>
+        </form>
+    </div>
+}
+
+<style>
+    .cart-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        background: #fff;
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 1px 6px rgba(0,0,0,.06);
+    }
+    .cart-table th, .cart-table td {
+        padding: 12px;
+        border-bottom: 1px solid #eee;
+        text-align: left;
+        vertical-align: middle;
+    }
+    .cart-table th {
+        background: #f5f6fb;
+        font-weight: 600;
+    }
+    .qty-input {
+        width: 64px;
+        padding: 6px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+    }
+    .btn-small {
+        padding: 6px 10px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        background: #503E9D;
+        color: #fff;
+        font-size: 13px;
+    }
+    .btn-small.danger {
+        background: #d9534f;
+    }
+    .cart-total {
+        margin-top: 16px;
+        font-size: 18px;
+        text-align: right;
+    }
+</style>

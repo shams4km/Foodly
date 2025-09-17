@@ -120,9 +120,12 @@
 </head>
 <body>
   <div class="app">
-    <aside class="sidebar">
-      @await Html.PartialAsync("_Sidebar")
-    </aside>
+    @if (!User.IsInRole("Admin"))
+    {
+      <aside class="sidebar">
+        @await Html.PartialAsync("_Sidebar")
+      </aside>
+    }
 
     <main class="content">
       <section class="panel">

@@ -6,34 +6,35 @@
 
 <h2>Registered Users</h2>
 
+<!-- Кнопка выхода в стиле Settings -->
+<div style="text-align: right; margin: 10px 0;">
+    <a href="/auth/logout" class="btn btn-danger" style="text-decoration: none; padding: 6px 12px; border-radius: 10px; display: inline-block;">
+        Logout
+    </a>
+</div>
+
 @if (TempData["Error"] != null)
 {
-    <div style="color:red">@TempData["Error"]</div>
+    <p style="color:red">@TempData["Error"]</p>
 }
 
-<table style="width:100%;border-collapse:collapse">
-    <thead>
-    <tr style="text-align:left;border-bottom:1px solid #ccc">
+<table border="1" cellpadding="5" cellspacing="0" style="width:100%; margin-top:10px">
+    <tr>
         <th>Email</th>
         <th>Username</th>
         <th>Actions</th>
     </tr>
-    </thead>
-    <tbody>
     @foreach (var user in Model)
     {
-        <tr style="border-bottom:1px solid #eee">
+        <tr>
             <td>@user.Email</td>
             <td>@user.UserName</td>
             <td>
-                <form asp-action="DeleteUser" method="post" style="display:inline">
+                <form asp-action="DeleteUser" method="post">
                     <input type="hidden" name="id" value="@user.Id" />
-                    <button type="submit" style="padding:4px 8px;border-radius:6px;background:#d9534f;color:#fff;border:none;cursor:pointer">
-                        Delete
-                    </button>
+                    <button type="submit">Delete</button>
                 </form>
             </td>
         </tr>
     }
-    </tbody>
 </table>

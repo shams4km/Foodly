@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Foodly.Web")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute(" ")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+b0a20ce4e56ccb1cbb667cfa080f35ec210f45d4")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ad076d9318cd1b3e4eaec288ca18310924a5c10f")]
 [assembly: System.Reflection.AssemblyProductAttribute("Foodly.Web")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Foodly.Web")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
