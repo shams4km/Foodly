@@ -29,8 +29,17 @@ namespace Foodly.Web.Controllers
                 .OrderBy(p => p.Level)
                 .ToListAsync();
 
+            // Берём последнюю подписку пользователя по дате окончания
             var sub = await _ctx.UserSubscriptions
-                .FirstOrDefaultAsync(s => s.UserId == user.Id && s.IsActive);
+                .Where(s => s.UserId == user.Id)
+                .OrderByDescending(s => s.EndDate)
+                .FirstOrDefaultAsync();
+
+            // Если подписка истекла, считаем её неактивной
+            if (sub != null && sub.EndDate < DateTime.UtcNow)
+            {
+                sub.IsActive = false;
+            }
 
             var vm = new SettingsVm
             {
@@ -42,21 +51,21 @@ namespace Foodly.Web.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> ToggleSubscription(int planId)
+        public async Task<IActionResult> ToggleSubscription([FromBody] ToggleSubVm vm)
         {
             var user = await _userManager.GetUserAsync(User);
             if (user == null) return Unauthorized();
 
             var sub = await _ctx.UserSubscriptions
-                .FirstOrDefaultAsync(s => s.UserId == user.Id && s.PlanId == planId);
+                .FirstOrDefaultAsync(s => s.UserId == user.Id && s.PlanId == vm.PlanId);
 
             if (sub == null)
             {
-                // новый юзер → создаём подписку на месяц
+                // создаём подписку на месяц
                 sub = new UserSubscription
                 {
                     UserId = user.Id,
-                    PlanId = planId,
+                    PlanId = vm.PlanId,
                     StartDate = DateTime.UtcNow,
                     EndDate = DateTime.UtcNow.AddMonths(1),
                     IsActive = true
@@ -76,7 +85,7 @@ namespace Foodly.Web.Controllers
 
             await _ctx.SaveChangesAsync();
 
-            return Json(new { ok = true, active = sub.IsActive, planId });
+            return Json(new { ok = true, active = sub.IsActive, planId = sub.PlanId });
         }
     }
 
@@ -85,5 +94,10 @@ namespace Foodly.Web.Controllers
     {
         public List<SubscriptionPlan> Plans { get; set; } = new();
         public UserSubscription? ActiveSubscription { get; set; }
+    }
+
+    public class ToggleSubVm
+    {
+        public int PlanId { get; set; }
     }
 }

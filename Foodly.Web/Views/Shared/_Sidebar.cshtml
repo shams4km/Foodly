@@ -1,5 +1,7 @@
 @{
     // Текущий маршрут — чтобы подсвечивать активный пункт
+    var isAdmin = User.IsInRole("Admin");
+
     var ctl = (ViewContext.RouteData.Values["controller"] as string ?? "").ToLower();
     var act = (ViewContext.RouteData.Values["action"] as string ?? "").ToLower();
     Func<string, bool> isActive = c => ctl == (c ?? "").ToLower();

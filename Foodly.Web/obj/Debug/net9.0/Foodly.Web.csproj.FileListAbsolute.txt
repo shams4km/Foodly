@@ -715,3 +715,4 @@ C:/Foodly/Foodly.Web/obj/Debug/net9.0/compressed/c1a5sac4kn-zi69ms02e2.gz
 /Users/shams/Downloads/Foodly 2/Foodly.Web/obj/Debug/net9.0/Foodly.Web.pdb
 /Users/shams/Downloads/Foodly 2/Foodly.Web/obj/Debug/net9.0/Foodly.Web.genruntimeconfig.cache
 /Users/shams/Downloads/Foodly 2/Foodly.Web/obj/Debug/net9.0/ref/Foodly.Web.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Web/obj/Debug/net9.0/Foodly.Web.sourcelink.json

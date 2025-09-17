@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Foodly.Web.Models.Account;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace Foodly.Web.Controllers
 {
@@ -44,7 +45,16 @@ namespace Foodly.Web.Controllers
                 return View(vm);
             }
 
-            return LocalRedirect(string.IsNullOrWhiteSpace(vm.ReturnUrl) ? "/app" : vm.ReturnUrl!);
+            // Определяем redirectUrl по роли
+            string redirectUrl;
+            var roles = await _users.GetRolesAsync(user);
+
+            if (roles.Contains("Admin"))
+                redirectUrl = "/Admin/Users"; // Страница админа
+            else
+                redirectUrl = "/"; // Главная для обычного пользователя
+
+            return LocalRedirect(string.IsNullOrWhiteSpace(vm.ReturnUrl) ? redirectUrl : vm.ReturnUrl!);
         }
 
         // GET /auth/register
@@ -67,11 +77,22 @@ namespace Foodly.Web.Controllers
                 return View(vm);
             }
 
-            // сохраним полное имя в клейме, чтобы не усложнять модель пользователя
+            // Сохраняем полное имя в клейме
             await _users.AddClaimAsync(user, new Claim("full_name", vm.FullName));
 
+            // Авто-вход после регистрации
             await _signIn.SignInAsync(user, isPersistent: true);
-            return LocalRedirect(string.IsNullOrWhiteSpace(vm.ReturnUrl) ? "/app" : vm.ReturnUrl!);
+
+            // Определяем redirectUrl по роли
+            string redirectUrl;
+            var roles = await _users.GetRolesAsync(user);
+
+            if (roles.Contains("Admin"))
+                redirectUrl = "/Admin/Users";
+            else
+                redirectUrl = "/";
+
+            return LocalRedirect(string.IsNullOrWhiteSpace(vm.ReturnUrl) ? redirectUrl : vm.ReturnUrl!);
         }
 
         // GET /auth/forgot
@@ -85,7 +106,7 @@ namespace Foodly.Web.Controllers
             if (!ModelState.IsValid) return View(vm);
 
             var user = await _users.FindByEmailAsync(vm.Email);
-            // мы не отдаем, существует ли юзер — показываем одинаковый ответ (без реальной отправки почты для демо)
+            // не раскрываем, существует ли юзер
             vm.Sent = true;
             return View(vm);
         }

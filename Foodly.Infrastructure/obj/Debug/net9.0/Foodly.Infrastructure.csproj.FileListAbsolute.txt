@@ -36,3 +36,4 @@ C:/Foodly/Foodly.Infrastructure/obj/Debug/net9.0/ref/Foodly.Infrastructure.dll
 /Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.pdb
 /Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.genruntimeconfig.cache
 /Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/ref/Foodly.Infrastructure.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Infrastructure/obj/Debug/net9.0/Foodly.Infrastructure.sourcelink.json

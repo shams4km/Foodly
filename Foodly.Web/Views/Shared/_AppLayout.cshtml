@@ -1,6 +1,12 @@
+@using Microsoft.AspNetCore.Identity
+@using Microsoft.AspNetCore.Mvc.TagHelpers
+@inject UserManager<IdentityUser> UserManager
 @{
     Layout = null;
     var title = ViewData["Title"] as string ?? "Nibble";
+    
+    var isAdmin = User.IsInRole("Admin");
+
 }
 <!DOCTYPE html>
 <html lang="en">

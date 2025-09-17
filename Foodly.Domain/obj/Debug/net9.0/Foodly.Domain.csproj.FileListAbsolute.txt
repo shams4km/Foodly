@@ -20,3 +20,4 @@ C:/Foodly/Foodly.Domain/obj/Debug/net9.0/ref/Foodly.Domain.dll
 /Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/refint/Foodly.Domain.dll
 /Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.pdb
 /Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/ref/Foodly.Domain.dll
+/Users/shams/Downloads/Foodly 2/Foodly.Domain/obj/Debug/net9.0/Foodly.Domain.sourcelink.json

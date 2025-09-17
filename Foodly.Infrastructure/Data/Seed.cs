@@ -2,6 +2,9 @@ using Foodly.Domain.Entities;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
+using System;
+using System.Linq;
+using System.Threading.Tasks;
 
 namespace Foodly.Infrastructure.Data
 {
@@ -19,19 +22,51 @@ namespace Foodly.Infrastructure.Data
                 if (!await roleMgr.RoleExistsAsync(r))
                     await roleMgr.CreateAsync(new IdentityRole(r));
 
-            // Админ-пользователь (IdentityUser)
+            // Админ-пользователь
             var userMgr = scope.ServiceProvider.GetRequiredService<UserManager<IdentityUser>>();
             var email = "admin@foodly.local";
             var admin = await userMgr.Users.FirstOrDefaultAsync(u => u.Email == email);
+
             if (admin == null)
             {
                 admin = new IdentityUser { UserName = email, Email = email, EmailConfirmed = true };
                 await userMgr.CreateAsync(admin, "Admin123!");
-                await userMgr.AddToRoleAsync(admin, "Admin");
-                await userMgr.AddClaimAsync(admin, new System.Security.Claims.Claim("HasActiveSubscription", "true"));
             }
 
-            // Стартовые данные
+            // Добавляем роль Admin, если её нет
+            if (!await userMgr.IsInRoleAsync(admin, "Admin"))
+                await userMgr.AddToRoleAsync(admin, "Admin");
+
+            // Добавляем запись в UserSubscription (Pro) для админа
+            if (!ctx.UserSubscriptions.Any(us => us.UserId == admin.Id))
+            {
+                // Берём Pro-план
+                var proPlan = await ctx.SubscriptionPlans.FirstOrDefaultAsync(p => p.Level == 1);
+                if (proPlan == null)
+                {
+                    // Если план ещё не создан, создаём его
+                    proPlan = new SubscriptionPlan
+                    {
+                        Name = "Pro",
+                        Level = 1,
+                        PricePerMonth = 9.99m,
+                        Features = "Favourites, Chat, Free delivery"
+                    };
+                    ctx.SubscriptionPlans.Add(proPlan);
+                    await ctx.SaveChangesAsync();
+                }
+
+                ctx.UserSubscriptions.Add(new UserSubscription
+                {
+                    UserId = admin.Id,
+                    PlanId = proPlan.Id,
+                    StartDate = DateTime.UtcNow,
+                    EndDate = DateTime.UtcNow.AddYears(1),
+                    IsActive = true
+                });
+            }
+
+            // Стартовые категории
             if (!ctx.Categories.Any())
             {
                 ctx.Categories.AddRange(
@@ -41,6 +76,7 @@ namespace Foodly.Infrastructure.Data
                 );
             }
 
+            // Стартовые рестораны и продукты
             if (!ctx.Restaurants.Any())
             {
                 var rest = new Restaurant { Name = "Sunrise Diner", Description = "Tasty burgers and fries." };
@@ -56,10 +92,11 @@ namespace Foodly.Infrastructure.Data
                 );
             }
 
+            // Планы подписки
             if (!ctx.SubscriptionPlans.Any())
             {
                 ctx.SubscriptionPlans.AddRange(
-                    new SubscriptionPlan { Name = "Basic", Level = 0, PricePerMonth = 0,     Features = "Limited features" },
+                    new SubscriptionPlan { Name = "Basic", Level = 0, PricePerMonth = 0, Features = "Limited features" },
                     new SubscriptionPlan { Name = "Pro",   Level = 1, PricePerMonth = 9.99m, Features = "Favourites, Chat, Free delivery" }
                 );
             }

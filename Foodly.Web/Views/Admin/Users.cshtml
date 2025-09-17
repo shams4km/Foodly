@@ -1,0 +1,39 @@
+@model IEnumerable<Microsoft.AspNetCore.Identity.IdentityUser>
+@{
+    Layout = "_AppLayout";
+    ViewData["Title"] = "Manage Users";
+}
+
+<h2>Registered Users</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div style="color:red">@TempData["Error"]</div>
+}
+
+<table style="width:100%;border-collapse:collapse">
+    <thead>
+    <tr style="text-align:left;border-bottom:1px solid #ccc">
+        <th>Email</th>
+        <th>Username</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    @foreach (var user in Model)
+    {
+        <tr style="border-bottom:1px solid #eee">
+            <td>@user.Email</td>
+            <td>@user.UserName</td>
+            <td>
+                <form asp-action="DeleteUser" method="post" style="display:inline">
+                    <input type="hidden" name="id" value="@user.Id" />
+                    <button type="submit" style="padding:4px 8px;border-radius:6px;background:#d9534f;color:#fff;border:none;cursor:pointer">
+                        Delete
+                    </button>
+                </form>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
